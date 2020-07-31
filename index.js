@@ -18,4 +18,4 @@ app.get("/", (req, res) => {
 
 app.use(SIGN_UP_ENDPOINT, signUpRoute);
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
