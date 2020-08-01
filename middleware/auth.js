@@ -6,13 +6,11 @@ module.exports = function (req, res, next) {
   const token = req.header("x-auth-token");
   // check if token is there
   if (!token) {
-    return res.status(400).json({ msg: "no token authorized denied" });
+    return res.status(400).json({ msg: "no authorization token" });
   }
   // verify
   try {
     const decoded = jwt.verify(token, config.get("jwtsecret"));
-    req.user = decoded.user;
-    //console.log(req.user.id);
     next();
   } catch (err) {
     res.status(401).json({ mg: "Token invalid " });

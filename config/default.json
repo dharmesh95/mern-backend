@@ -1,3 +1,4 @@
 {
-  "mongoDBConnectURI": "mongodb+srv://admin:123@cluster0.mxoyb.mongodb.net/project?retryWrites=true&w=majority"
+  "mongoDBConnectURI": "mongodb+srv://admin:123@cluster0.mxoyb.mongodb.net/project?retryWrites=true&w=majority",
+  "jwtsecret": "hidden-leaf"
 }
