@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const config = require("config");
 const User = require("../../models/User");
 const auth = require("../../middleware/auth");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 
 router.post("/", async (req, res) => {
