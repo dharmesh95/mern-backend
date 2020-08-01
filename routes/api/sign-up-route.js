@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
     savedUser.token = jwt.sign(req.body.email, config.get("jwtsecret"));
     res.send(savedUser);
   } catch (err) {
+    console.log(err);
     res.status(500).send("Server error");
   }
 });
