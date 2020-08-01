@@ -15,7 +15,6 @@ router.get("/", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
   try {
-    console.log(req.body);
     const cart = new Cart(req.body);
     const savedCart = await cart.save();
     res.send(savedCart);
