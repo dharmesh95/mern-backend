@@ -11,13 +11,10 @@ router.post("/", async (req, res) => {
     const findUser = await User.findOne({ email: req.body.email });
     const val = await bcrypt.compare(req.body.password, findUser.password);
     if (val) {
-      console.log(findUser)
       findUser.token = jwt.sign(req.body.email, config.get("jwtsecret"));
-      console.log(findUser)
       res.send(findUser);
     } else res.status(500).send("Invalid email or password");
   } catch (err) {
-    console.log(err)
     res.status(500).send("Server error");
   }
 });
