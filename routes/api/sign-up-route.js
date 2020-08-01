@@ -7,7 +7,7 @@ const saltRounds = 10;
 
 router.post("/", async (req, res) => {
   try {
-    const hash = await bcrypt.hash(req.body.password, 10);
+    const hash = await bcrypt.hash(req.body.password, saltRounds);
     const findUser = await User.findOne({ email: req.body.email });
     if (findUser) {
       res.status(500).send("Email already registered");
@@ -22,7 +22,6 @@ router.post("/", async (req, res) => {
     savedUser.token = jwt.sign(req.body.email, config.get("jwtsecret"));
     res.send(savedUser);
   } catch (err) {
-    console.log(err);
     res.status(500).send("Server error");
   }
 });
